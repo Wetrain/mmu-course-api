@@ -17,8 +17,6 @@ urlpatterns = [
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    url(r'^users/', include('enterprise_course_api.users.urls', namespace='users')),
-    url(r'^accounts/', include('allauth.urls')),
     url(r'^api/', include('api.urls')),
     url(r'^http/', include('course.urls')),
 

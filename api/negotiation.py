@@ -1,14 +1,14 @@
-from rest_framework.negotiation import BaseContentNegotiation
+from rest_framework.negotiation import DefaultContentNegotiation
+from rest_framework.renderers import JSONRenderer
 
-class IgnoreClientContentNegotiation(BaseContentNegotiation):
-    def select_parser(self, request, parsers):
-        """
-        Select the first parser in the `.parser_classes` list.
-        """
-        return parsers[0]
+class IgnoreClientContentNegotiation(DefaultContentNegotiation):
 
     def select_renderer(self, request, renderers, format_suffix):
         """
         Select the first renderer in the `.renderer_classes` list.
         """
-        return (renderers[0], renderers[0].media_type)
+        content_type = request.GET.get('format')
+        if content_type:
+            return super().select_renderer(request, renderers, format_suffix)
+        else:
+            return (JSONRenderer(), JSONRenderer.media_type)
