@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% load staticfiles i18n %}
+{% load crispy_forms_tags %} 
+
+{% block content %}
+
+<head></head>
+
+<body>
+  <div class="jumbotron">
+    <h1>Adam Jones</h1>
+    <p>13121281</p>
+    <p>Use this form to add your own unique course!</p>
+  </div>
+
+{% crispy CreateCourseForm %}
+
+</body>
+{% endblock content %} 
+
+{% block javascript %} 
+
+{{ block.super }}
+<script src="{% static 'js/create.js' %}" type="text/javascript"></script> 
+
+{% endblock javascript %}

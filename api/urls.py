@@ -10,4 +10,4 @@ urlpatterns = [
     url(r'^tutors/(?P<pk>[0-9]+)/$', views.TutorDetail.as_view()),
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'xml'])
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'xml', 'text'])

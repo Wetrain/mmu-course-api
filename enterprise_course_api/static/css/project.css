@@ -1,5 +1,11 @@
 /* These styles are generated from project.scss. */
 
+
+#warning p {
+  color: #b94a48;
+  
+}
+
 .alert-debug {
   color: black;
   background-color: white;
@@ -35,4 +41,27 @@
 */
 [hidden][style="display: block;"] {
   display: block !important;
+}
+
+@media (min-width: 992px) {
+    .col-md-border:not(:last-child) {
+        border-right: 1px solid #d7d7d7;
+    }
+    .col-md-border + .col-md-border {
+        border-left: 1px solid #d7d7d7;
+        margin-left: -1px;
+    }
+}
+
+.course-object p {
+  color: black;
+}
+
+a .list-group-item {
+  color: black;
+}
+
+p a {
+  color: black;
+
 }

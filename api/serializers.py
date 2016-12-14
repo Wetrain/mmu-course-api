@@ -1,9 +1,10 @@
 from rest_framework import serializers
-from rest_framework.fields import EmailField
+from rest_framework.fields import EmailField, CharField
 from course.models import Course, Tutor
 
 class TutorSerializer(serializers.ModelSerializer):
     
+    name = CharField(allow_blank=True, max_length=254, required=False)
     email = EmailField(allow_blank=True, max_length=254, required=False)
 
     class Meta:
@@ -21,7 +22,7 @@ class CourseSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         tutors_data = validated_data.pop("tutor")
         course = Course.objects.create(**validated_data)
-        print('foo')
+
         for tutor_data in tutors_data:
             try:
                 tutor = Tutor.objects.get(email=tutor_data['email'])
@@ -29,6 +30,7 @@ class CourseSerializer(serializers.ModelSerializer):
             except Tutor.DoesNotExist:
                 tutor = Tutor.objects.create(**tutor_data)
                 course.tutor.add(tutor)
+
         return course
 
     def update(self, instance, validated_data):
@@ -37,7 +39,7 @@ class CourseSerializer(serializers.ModelSerializer):
         instance.duration = validated_data.get("duration", instance.duration)
         instance.about = validated_data.get("about", instance.about)
         tutors_data = validated_data.pop("tutor")
-
+        print('updated')
         for tutor_data in tutors_data:
             try:
                 tutor = Tutor.objects.get(email=tutor_data['email'])
@@ -45,6 +47,8 @@ class CourseSerializer(serializers.ModelSerializer):
             except Tutor.DoesNotExist:
                 tutor = Tutor.objects.create(**tutor_data)
                 instance.tutor.add(tutor)
+        
+        instance.save()
         return instance
 
 
