@@ -16,6 +16,7 @@ ROOT_DIR = environ.Path(__file__) - 3  # (enterprise_course_api/config/settings/
 APPS_DIR = ROOT_DIR.path('enterprise_course_api')
 
 env = environ.Env()
+env.read_env()
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -39,15 +40,12 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
-    'rest_framework'
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     # custom users app
     'enterprise_course_api.users.apps.UsersConfig',
-    'api',
-    'course'
     # Your stuff: custom apps go here
 )
 
@@ -92,7 +90,7 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ("""Adam Jones""", 'adds68@me.com'),
+    ("""adam j""", 'you@example.com'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -113,7 +111,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'GMT'
+TIME_ZONE = 'UTC'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en-us'
@@ -254,20 +252,3 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
-
-REST_FRAMEWORK = {
-  'DEFAULT_RENDERER_CLASSES': (
-    'rest_framework.renderers.JSONRenderer',
-    'rest_framework_xml.renderers.XMLRenderer',
-    'api.renderers.PlainTextRenderer',
-  ),
-    'DEFAULT_PARSER_CLASSES': (
-    'rest_framework.parsers.JSONParser',
-    'rest_framework_xml.parsers.XMLParser',
-  ),
-  'TEST_REQUEST_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework_xml.renderers.XMLRenderer',
-   ),
-  'DEFAULT_CONTENT_NEGOTIATION_CLASS': 'api.negotiation.IgnoreClientContentNegotiation',
-}
