@@ -9,6 +9,8 @@ from __future__ import absolute_import, unicode_literals
 from django.utils import six
 
 from os.path import abspath, basename, dirname
+from sys import path
+
 
 from .common import *  # noqa
 
