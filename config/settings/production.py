@@ -30,7 +30,7 @@ STATIC_ROOT = 'static' # Important for Heroku
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    path.join(ROOT_DIR, 'static'),  # Important for Heroku
+    string.join(ROOT_DIR, 'static'),  # Important for Heroku
 )
 
 # SECURITY CONFIGURATION
