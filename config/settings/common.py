@@ -46,6 +46,8 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # custom users app
     'enterprise_course_api.users.apps.UsersConfig',
+    'course',
+    'api',
     # Your stuff: custom apps go here
 )
 
