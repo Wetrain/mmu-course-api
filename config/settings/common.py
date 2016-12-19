@@ -270,4 +270,8 @@ REST_FRAMEWORK = {
         'rest_framework_xml.renderers.XMLRenderer',
    ),
   'DEFAULT_CONTENT_NEGOTIATION_CLASS': 'api.negotiation.IgnoreClientContentNegotiation',
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+    )
 }
+
