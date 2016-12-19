@@ -64,8 +64,6 @@ INSTALLED_APPS += (
     'storages',
 )
 
-INSTALLED_APPS = ('collectfast', ) + INSTALLED_APPS
-
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
