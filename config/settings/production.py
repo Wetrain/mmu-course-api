@@ -2,10 +2,6 @@
 """
 Production Configurations
 
-- Use Amazon's S3 for storing static files and uploaded media
-- Use mailgun to send emails
-- Use Redis for cache
-
 
 """
 from __future__ import absolute_import, unicode_literals
@@ -55,14 +51,6 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
 INSTALLED_APPS += ('gunicorn', )
 
 
-# STORAGE CONFIGURATION
-# ------------------------------------------------------------------------------
-# Uploaded Media Files
-# ------------------------
-# See: http://django-storages.readthedocs.io/en/latest/index.html
-INSTALLED_APPS += (
-    'storages',
-)
 
 # EMAIL
 # ------------------------------------------------------------------------------
