@@ -22,6 +22,16 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # properly on Heroku.
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+# Important for Heroku
+BASE_DIR = dirname(dirname(abspath(__file__)))
+
+STATIC_ROOT = 'static' # Important for Heroku
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    path.join(BASE_DIR, 'static'),  # Important for Heroku
+)
+
 # SECURITY CONFIGURATION
 # ------------------------------------------------------------------------------
 # See https://docs.djangoproject.com/en/1.9/ref/middleware/#module-django.middleware.security
