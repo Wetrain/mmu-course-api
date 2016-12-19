@@ -8,8 +8,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils import six
 
-import os
-
+from os.path import abspath, basename
 
 from .common import *  # noqa
 
