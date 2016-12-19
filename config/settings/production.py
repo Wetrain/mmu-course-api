@@ -8,10 +8,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils import six
 
-from os.path import abspath, basename, dirname
-from sys import path
-
-
 from .common import *  # noqa
 
 # SECRET CONFIGURATION
@@ -25,13 +21,8 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # properly on Heroku.
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Important for Heroku
-STATIC_ROOT = 'static' # Important for Heroku
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    string.join(ROOT_DIR, 'static'),  # Important for Heroku
-)
+WHITENOISE_MIDDLEWARE = ('whitenoise.middleware.WhiteNoiseMiddleware', )
+MIDDLEWARE = WHITENOISE_MIDDLEWARE + MIDDLEWARE
 
 # SECURITY CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -61,7 +52,7 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
 
 INSTALLED_APPS += ('gunicorn', )
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # EMAIL
 # ------------------------------------------------------------------------------
