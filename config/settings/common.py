@@ -261,9 +261,10 @@ REST_FRAMEWORK = {
     'rest_framework_xml.renderers.XMLRenderer',
     'api.renderers.PlainTextRenderer',
   ),
-    'DEFAULT_PARSER_CLASSES': (
+  'DEFAULT_PARSER_CLASSES': (
     'rest_framework.parsers.JSONParser',
     'rest_framework_xml.parsers.XMLParser',
+    'api.parsers.PlainTextParser',
   ),
   'TEST_REQUEST_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',

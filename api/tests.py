@@ -18,7 +18,7 @@ class CourseTests(TestCase):
         response.render()
         self.assertEqual(response.content.decode('utf8'), '{"id":1,"name":"maths","credits":100,"duration":"459 00:00:00","tutor":[{"id":1,"name":"nick","room":"","school":"","email":"a@c.com"}],"about":"maths stuff"}')
 
-def test_xml_course_create(self):
+    def test_xml_course_create(self):
         """
         Ensure we can create a basic course object
         """
@@ -35,21 +35,21 @@ def test_xml_course_create(self):
         response.render()
         self.assertEqual(response.content.decode('utf8'), '{"id":1,"name":"maths","credits":100,"duration":"459 00:00:00","tutor":[{"id":1,"name":"nick","room":"","school":"","email":"a@c.com"}],"about":"maths stuff"}')
 
-def test_course_detail(self):
-    """
-    Ensure we retrieve the correct course info
-    """
-    tutor = Tutor.objects.create(name="nick", email="a@c.com")
-    tutor.save()
-    duration = datetime.timedelta(weeks=30)
-    course = Course.objects.create(name="programming-advanced", credits=100, duration=duration, about="hello")
-    course.tutor.add(tutor)
-    course.save()
+    def test_course_detail(self):
+        """
+        Ensure we retrieve the correct course info
+        """
+        tutor = Tutor.objects.create(name="nick", email="a@c.com")
+        tutor.save()
+        duration = datetime.timedelta(weeks=30)
+        course = Course.objects.create(name="programming-advanced", credits=100, duration=duration, about="hello")
+        course.tutor.add(tutor)
+        course.save()
 
-    view = CourseDetail.as_view()
-    request = self.factory.get('/api/courses/{}/'.format(course.pk))
-    response = view(request, pk=course.pk)
-    response.render()
-    self.assertEqual(response.data['id'], course.pk)
+        view = CourseDetail.as_view()
+        request = self.factory.get('/api/courses/{}/'.format(course.pk))
+        response = view(request, pk=course.pk)
+        response.render()
+        self.assertEqual(response.data['id'], course.pk)
 
    
