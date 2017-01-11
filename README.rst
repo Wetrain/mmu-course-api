@@ -1,63 +1,71 @@
 enterprise_course_api
 =====================
 
-A short description of the project.
+This is a Django/Python based HTTP and Restful API built for my Enterprise Programming course at university.
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
-     :alt: Built with Cookiecutter Django
-
+The project also has a jQuery UI and is hosted the Heroku web hosting platform [Here](https://aqueous-shore-75997.herokuapp.com) 
 
 :License: MIT
 
-
-Settings
+Configuration
 --------
 
-Moved to settings_.
 
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
-
-Basic Commands
---------------
-
-Setting Up Your Users
+Local
 ^^^^^^^^^^^^^^^^^^^^^
+The following requirments are needed to run the application locally and this has been testec on Both Mac and Linux distributions.
 
-* To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
 
-* To create an **superuser account**, use this command::
+* [Python 3](https://www.python.org/downloads/) 
+* [PostgresSQL](https://www.postgresql.org/download/)
+* [VirtualEnvWrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html)
+
+To download and configure the application files, simply clone this repository and then run the following commands:
+
+To configure the virtualenv:
+```sh
+$ pip install virtualenvwrapper
+$ mkvirtualenv *yourenvname*
+$ workon *yourenvname*
+```
+
+To configure the database:
+```sh
+$ psql
+$ create database enterprise_course_api
+```
+
+To configure django:
+```sh
+$ cd enterprise_course_api
+$ pip install -r requirments/requirments.txt
+```
+
+To set up the database:
+```sh
+$ cd enterprise_course_api
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+
+* To create an **superuser account**, use this command via the command line::
 
     $ python manage.py createsuperuser
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+Then follow the onscreen prompt to create a super user.
+
+To launch the application:
+```sh
+$ cd enterprise_course_api
+$ python manage.py runserver
+```
 
 Test coverage
 ^^^^^^^^^^^^^
 
-To run the tests, check your test coverage, and generate an HTML coverage report::
+To run the tests::
 
-    $ coverage run manage.py test
-    $ coverage html
-    $ open htmlcov/index.html
-
-Running tests with py.test
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-::
-
-  $ py.test
-
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
-
-
-
-
+    $ pythonmanage.py test
 
 Deployment
 ----------
