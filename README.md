@@ -7,8 +7,6 @@ This is a Django/Python based HTTP and Restful API built for my Enterprise Progr
 
 The project also has a jQuery UI and is hosted the Heroku web hosting platform [Here](https://aqueous-shore-75997.herokuapp.com) 
 
-:License: MIT
-
 #Configuration
 
 Local
@@ -49,9 +47,10 @@ $ python manage.py migrate
 ```
 
 * To create an **superuser account**, use this command via the command line::
-
+    ```sh
     $ python manage.py createsuperuser
-
+    ```
+    
 Then follow the onscreen prompt to create a super user.
 
 To launch the application:
