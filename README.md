@@ -47,11 +47,9 @@ $ python manage.py migrate
 ```
 
 To create a **superuser account**, use this command via the command line:
-
     ```sh
     $ python manage.py createsuperuser
     ```
-
 Then follow the onscreen prompt to create a super user.
 
 To launch the application:
