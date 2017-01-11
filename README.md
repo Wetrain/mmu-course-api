@@ -13,7 +13,7 @@ The project also has a jQuery UI and is hosted the Heroku web hosting platform [
 
 Local
 --------
-The following requirments are needed to run the application locally and this has been testec on Both Mac and Linux distributions.
+The following requirments are needed to run the application locally and this has been tested on Both Mac and Linux distributions.
 
 
 * [Python 3](https://www.python.org/downloads/) 
@@ -29,7 +29,7 @@ $ mkvirtualenv *yourenvname*
 $ workon *yourenvname*
 ```
 
-To configure the database:
+To create the database:
 ```sh
 $ psql
 $ create database enterprise_course_api
@@ -73,7 +73,7 @@ To deploy the application to Heroku, you must first creat an account at [Heroku]
 
 Then install the Heroku Toolbelt [Here](https://devcenter.heroku.com/articles/heroku-cli)
 
-The configure the settings outlined here:
+Then configure the settings outlined here:
 ```sh
 heroku create --buildpack https://github.com/heroku/heroku-buildpack-python
 
@@ -88,9 +88,8 @@ heroku config:set DJANGO_SECRET_KEY="$(openssl rand -base64 64)"
 heroku config:set DJANGO_SETTINGS_MODULE='config.settings.production'
 heroku config:set DJANGO_ALLOWED_HOSTS='.herokuapp.com'
 
-heroku config:set DJANGO_MAILGUN_SERVER_NAME=YOUR_MALGUN_SERVER
-heroku config:set DJANGO_MAILGUN_API_KEY=YOUR_MAILGUN_API_KEY
-heroku config:set MAILGUN_SENDER_DOMAIN=YOUR_MAILGUN_SENDER_DOMAIN
+heroku config:set DJANGO_MAILGUN_API_KEY=pubkey-0f4919d2e64610e15b8b9190cde539b8 
+heroku config:set MAILGUN_SENDER_DOMAIN=mg.my-mmu-domain.com
 
 heroku config:set PYTHONHASHSEED=random
 heroku config:set DJANGO_ADMIN_URL=\^admin/
