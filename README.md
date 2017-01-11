@@ -74,7 +74,7 @@ To deploy the application to Heroku, you must first creat an account at [Heroku]
 Then install the Heroku Toolbelt [Here](https://devcenter.heroku.com/articles/heroku-cli)
 
 The configure the settings outlined here:
-''' sh
+```sh
 heroku create --buildpack https://github.com/heroku/heroku-buildpack-python
 
 heroku addons:create heroku-postgresql:hobby-dev
@@ -100,7 +100,7 @@ heroku run python manage.py migrate
 heroku run python manage.py check --deploy
 heroku run python manage.py createsuperuser
 heroku open
-'''
+```
 
 
 
