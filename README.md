@@ -7,12 +7,10 @@ The project also has a jQuery UI and is hosted the Heroku web hosting platform [
 
 :License: MIT
 
-Configuration
---------
-
+#Configuration
 
 Local
-^^^^^^^^^^^^^^^^^^^^^
+--------
 The following requirments are needed to run the application locally and this has been testec on Both Mac and Linux distributions.
 
 
@@ -61,20 +59,19 @@ $ python manage.py runserver
 ```
 
 Test coverage
-^^^^^^^^^^^^^
+--------
 
 To run the tests::
 
     $ pythonmanage.py test
 
-Deployment
-----------
+#Deployment
 
 The following details how to deploy this application.
 
 
 Heroku
-^^^^^^
+--------
 
 See detailed `cookiecutter-django Heroku documentation`_.
 
