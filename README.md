@@ -3,6 +3,8 @@ enterprise_course_api
 
 This is a Django/Python based HTTP and Restful API built for my Enterprise Programming course at university.
 
+**Student ID: 13121281**
+
 The project also has a jQuery UI and is hosted the Heroku web hosting platform [Here](https://aqueous-shore-75997.herokuapp.com) 
 
 :License: MIT
@@ -63,19 +65,42 @@ Test coverage
 
 To run the tests::
 
-    $ pythonmanage.py test
+    $ python manage.py test
 
 #Deployment
 
-The following details how to deploy this application.
+To deploy the application to Heroku, you must first creat an account at [Heroku](https://www.heroku.com/home)
 
+Then install the Heroku Toolbelt [Here](https://devcenter.heroku.com/articles/heroku-cli)
 
-Heroku
---------
+The configure the settings outlined here:
+''' sh
+heroku create --buildpack https://github.com/heroku/heroku-buildpack-python
 
-See detailed `cookiecutter-django Heroku documentation`_.
+heroku addons:create heroku-postgresql:hobby-dev
+heroku pg:backups schedule --at '02:00 America/Los_Angeles' DATABASE_URL
+heroku pg:promote DATABASE_URL
 
-.. _`cookiecutter-django Heroku documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html
+heroku addons:create mailgun
+
+heroku config:set DJANGO_ADMIN_URL="$(openssl rand -base64 32)"
+heroku config:set DJANGO_SECRET_KEY="$(openssl rand -base64 64)"
+heroku config:set DJANGO_SETTINGS_MODULE='config.settings.production'
+heroku config:set DJANGO_ALLOWED_HOSTS='.herokuapp.com'
+
+heroku config:set DJANGO_MAILGUN_SERVER_NAME=YOUR_MALGUN_SERVER
+heroku config:set DJANGO_MAILGUN_API_KEY=YOUR_MAILGUN_API_KEY
+heroku config:set MAILGUN_SENDER_DOMAIN=YOUR_MAILGUN_SENDER_DOMAIN
+
+heroku config:set PYTHONHASHSEED=random
+heroku config:set DJANGO_ADMIN_URL=\^admin/
+
+git push heroku master
+heroku run python manage.py migrate
+heroku run python manage.py check --deploy
+heroku run python manage.py createsuperuser
+heroku open
+'''
 
 
 
